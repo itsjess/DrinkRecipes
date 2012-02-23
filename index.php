@@ -23,7 +23,7 @@ http://creativecommons.org/licenses/GPL/2.0/
 <body id="type-a">
 <div id="wrap">
 <?php
-   include('header.html');
+   include('header.php');
 ?>
 	<!--<div id="header">
 		<div id="site-name">Drink Recipes</div>
