@@ -10,7 +10,6 @@
 <body>
 <div id="contents">
   <h1>Search</h1>
-  <p>For example, you can type 'movies', 'coffee', 'Mexican', or the name of a store like 'Starbucks</p>
   <form method="post" action="search.php">
     <label for="username">Search:</label>
     <input type="text" id="search" name="search" />
@@ -19,6 +18,7 @@
   
   <?php
   include('db_connect.php');
+  
   
   if (isset($_POST['search']))
   {
@@ -30,21 +30,45 @@
 		inner join difficulty on mix_drinks.difficulty_id = difficulty.difficulty_id 
 		inner join strength on mix_drinks.strength_id = strength.strength_id
 		where mix_drinks.drink_name LIKE '%$searchterm%'OR difficulty.difficulty LIKE '%$searchterm%'  OR strength.strength like '%$searchterm%' 
-		OR ingredients.ingredient like '%$searchterm%'";
+		OR ingredients.ingredient like '%$searchterm%'
+		order by mix_drinks.drink_name";
   
-		
   		$result = mysqli_query($db, $query)
    			or die("Error Querying Database");
-   		echo "<table id=\"hor-minimalist-b\">\n<tr><th>Drink Name</th><th>Ingredient</th><th>Strength</th><th>Difficulty</th><tr>\n\n";
+   		echo "<table id=\"hor-minimalist-b\">\n<tr><th>Drink Name</th><th>Strength</th><th>Difficulty</th><th>Ingredient</th><tr>\n\n";
+		
+		$name1 = "";
+		$count = 0;
    		while($row = mysqli_fetch_array($result)) {
-  			$name = $row['drink_name'];
-  			$ingredient = $row['ingredient'];
-  			$strength = $row['strength'];
-			$difficulty = $row['difficulty'];
-
-		  	echo "<tr><td  >$name</td><td >$ingredient</td><td >$strength</td><td>$difficulty</td></tr>\n";
+  			
+			$name = $row['drink_name'];
+			
+			if ($count == 0)
+			{
+				$strength = $row['strength'];
+				$difficulty = $row['difficulty'];
+				$ingredient = $row['ingredient'];
+				echo "<tr><td>$name</td><td >$strength</td><td>$difficulty</td><td >$ingredient";
+				$count++;
+			}
+			else if ($name1 == $name)
+			{
+				$ingredient = $row['ingredient'];
+				echo ", $ingredient";
+			}
+		  	else
+			{
+				echo "</td></tr>\n";
+				$strength = $row['strength'];
+				$difficulty = $row['difficulty'];
+				$ingredient = $row['ingredient'];
+				echo "<tr><td>$name</td><td >$strength</td><td>$difficulty</td><td >$ingredient";
+			}
+			
+			$name1 = $row['drink_name'];
 	    }
 	    echo "</table>\n"; 
+		
   	}
   	
   
