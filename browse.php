@@ -24,6 +24,7 @@ http://creativecommons.org/licenses/GPL/2.0/
 <div id="wrap">
 <?php
    include('header.php');
+  include "db_connect.php";
 ?>
 	<!--<div id="header">
 		<div id="site-name">Drink Recipes</div>
@@ -44,6 +45,7 @@ http://creativecommons.org/licenses/GPL/2.0/
 		</ul>
 	</div>-->
 	
+
 <font size = 6><center>Browse a Listing of all of our drinks!</font><br>
 <br><font size = 3>
 <a href="#Cosmo">[Cosmopolitan]</a> 
@@ -59,94 +61,264 @@ http://creativecommons.org/licenses/GPL/2.0/
 <br><br></center>
 <font size=4>
 <img alt="cosmo" src="cosmo.jpg" align=left>
+
 <a name="Cosmo"></a> 	
 <font size = 5>Cosmopolitan:</font><br>
-	<b>Ingredients</b><br>
-	1 part vodka<br>
-	1/2 part Triple Sec<br>
-	1/2 part Limeade Mix<br>
-	1/2 part Cranberry Juice<br>
+<?php
+//get drink id
+$drink_name_query = "SELECT drink_id FROM mix_drinks WHERE drink_name = 'Cosmopolitan'";
+$drink_name_result = mysqli_query($db, $drink_name_query)
+	or die("Error Querying Database");
+while($drink_name_row = mysqli_fetch_array($drink_name_result)){
+	$drink = $drink_name_row['drink_id'];
+} 
+//get drink ingredients
+$query = "SELECT ingredient, ingredient_amount FROM ingredients WHERE drink_id = '$drink'";
+$result = mysqli_query($db, $query)
+	or die("Error Querying Database1");
+echo "<table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
+while($row = mysqli_fetch_array($result)){
+	$ingredients = $row['ingredient'];
+	$amount = $row['ingredient_amount'];	
+	echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";	
+}
+echo "</table>\n" 
+?>
+
 <br><br><br>
+
 <img alt="Long Island" src="long island.jpg" align=left>	
 <a name="Long Island"></a> 
 <font size=5>Long Island Iced Tea:</font><br>
-	<b>Ingredients</b><br>
-	6 parts cola<br>
-	1/2 part Vodka<br>
-	1/2 part Gin<br>
-	1/2 part Rum<br>
-	1/2 part Triple Sec<br>
-	1/2 part Lemon Juice<br>
-	1/4 part Tequila<br>
+<?php
+//get drink id
+$drink_name_query = "SELECT drink_id FROM mix_drinks WHERE drink_name = 'Long Island Iced Tea'";
+$drink_name_result = mysqli_query($db, $drink_name_query)
+	or die("Error Querying Database");
+while($drink_name_row = mysqli_fetch_array($drink_name_result)){
+	$drink = $drink_name_row['drink_id'];
+} 
+//get drink ingredients
+$query = "SELECT ingredient, ingredient_amount FROM ingredients WHERE drink_id = '$drink'";
+$result = mysqli_query($db, $query)
+	or die("Error Querying Database1");
+echo "<table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
+while($row = mysqli_fetch_array($result)){
+	$ingredients = $row['ingredient'];
+	$amount = $row['ingredient_amount'];	
+	echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";	
+}
+echo "</table>\n" 
+?>
+
 <br>
+
 <img alt="daiquiri" src="daiquiri.jpg" align=left>	
 <a name="Daiquiri"></a> 
 <font size = 5>Daiquiri:</font><br>
-	<b>Ingredients</b><br>
-	2 parts rum<br>
-	1 1/2 parts Lime Juice<br>
-	1/5 part Powdered Sugar<br>
+<?php
+//get drink id
+$drink_name_query = "SELECT drink_id FROM mix_drinks WHERE drink_name = 'Daiquiri'";
+$drink_name_result = mysqli_query($db, $drink_name_query)
+	or die("Error Querying Database");
+while($drink_name_row = mysqli_fetch_array($drink_name_result)){
+	$drink = $drink_name_row['drink_id'];
+} 
+//get drink ingredients
+$query = "SELECT ingredient, ingredient_amount FROM ingredients WHERE drink_id = '$drink'";
+$result = mysqli_query($db, $query)
+	or die("Error Querying Database1");
+echo "<table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
+while($row = mysqli_fetch_array($result)){
+	$ingredients = $row['ingredient'];
+	$amount = $row['ingredient_amount'];	
+	echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";	
+}
+echo "</table>\n" 
+?>
+
 <br><br><br><br>
+
 <img alt="Mai Tai" src="mai tai.jpg" align=left>	
 <a name="Mai Tai"></a> 
 <font size = 5>Mai Tai:</font><br>
-	<b>Ingredients</b><br>
-	1 1/2 parts Rum<br>
-	1/2 part Triple Sec<br>
-	1/2 part Creme de Almond<br>
-	1/2 part Pineapple Juice <br>
-	1/2 part Sweet and Sour Mix<br>
+<?php
+//get drink id
+$drink_name_query = "SELECT drink_id FROM mix_drinks WHERE drink_name = 'Mai Tai'";
+$drink_name_result = mysqli_query($db, $drink_name_query)
+	or die("Error Querying Database");
+while($drink_name_row = mysqli_fetch_array($drink_name_result)){
+	$drink = $drink_name_row['drink_id'];
+} 
+//get drink ingredients
+$query = "SELECT ingredient, ingredient_amount FROM ingredients WHERE drink_id = '$drink'";
+$result = mysqli_query($db, $query)
+	or die("Error Querying Database1");
+echo "<table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
+while($row = mysqli_fetch_array($result)){
+	$ingredients = $row['ingredient'];
+	$amount = $row['ingredient_amount'];	
+	echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";	
+}
+echo "</table>\n" 
+?>
+
 <br>
+
 <img alt="Manhattan" src="manhattan.jpg" align=left>	
 <a name="Manhattan"></a> 
 <font size = 5>Manhattan:</font><br>
-	<b>Ingredients</b><br>
-	2 parts Bourbon<br>
-	3/4 part Sweet Vermouth<br>
-	1/5 part Angostura Bitter<br>
+<?php
+//get drink id
+$drink_name_query = "SELECT drink_id FROM mix_drinks WHERE drink_name = 'Manhattan'";
+$drink_name_result = mysqli_query($db, $drink_name_query)
+	or die("Error Querying Database");
+while($drink_name_row = mysqli_fetch_array($drink_name_result)){
+	$drink = $drink_name_row['drink_id'];
+} 
+//get drink ingredients
+$query = "SELECT ingredient, ingredient_amount FROM ingredients WHERE drink_id = '$drink'";
+$result = mysqli_query($db, $query)
+	or die("Error Querying Database1");
+echo "<table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
+while($row = mysqli_fetch_array($result)){
+	$ingredients = $row['ingredient'];
+	$amount = $row['ingredient_amount'];	
+	echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";	
+}
+echo "</table>\n" 
+?>
+
 <br><br><br><br>
+
 <img alt="Pina Colada" src="pina.jpg" align=left>
 <a name="Pina"></a> 
 <font size =5>Pina Colada:</font><br>
-	<b>Ingredients</b><br>
-	1 part Rum<br>
-	1 part Coconut Cream<br>
-	1 part Crushed Pineapple<br>
-	1/4 part Crushed Ice<br>
+<?php
+//get drink id
+$drink_name_query = "SELECT drink_id FROM mix_drinks WHERE drink_name = 'Pina Colada'";
+$drink_name_result = mysqli_query($db, $drink_name_query)
+	or die("Error Querying Database");
+while($drink_name_row = mysqli_fetch_array($drink_name_result)){
+	$drink = $drink_name_row['drink_id'];
+} 
+//get drink ingredients
+$query = "SELECT ingredient, ingredient_amount FROM ingredients WHERE drink_id = '$drink'";
+$result = mysqli_query($db, $query)
+	or die("Error Querying Database1");
+echo "<table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
+while($row = mysqli_fetch_array($result)){
+	$ingredients = $row['ingredient'];
+	$amount = $row['ingredient_amount'];	
+	echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";	
+}
+echo "</table>\n" 
+?>
+
 <br><br><br>
+
 <img alt="Mojito" src="mojito.jpg" align=left>	
 <a name="Mojito"></a> 
 <font size = 5>Mojito:</font><br>
-	<b>Ingredients</b><br>
-	1 part White Rum<br>
-	1 part Spearmint Scnhapps<br>
-	1 part Triple Sec<br>
-	1/3 part Lime Juice<br>
-	<br><br><br>
+<?php
+//get drink id
+$drink_name_query = "SELECT drink_id FROM mix_drinks WHERE drink_name = 'Mojito'";
+$drink_name_result = mysqli_query($db, $drink_name_query)
+	or die("Error Querying Database");
+while($drink_name_row = mysqli_fetch_array($drink_name_result)){
+	$drink = $drink_name_row['drink_id'];
+} 
+//get drink ingredients
+$query = "SELECT ingredient, ingredient_amount FROM ingredients WHERE drink_id = '$drink'";
+$result = mysqli_query($db, $query)
+	or die("Error Querying Database1");
+echo "<table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
+while($row = mysqli_fetch_array($result)){
+	$ingredients = $row['ingredient'];
+	$amount = $row['ingredient_amount'];	
+	echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";	
+}
+echo "</table>\n" 
+?>
+
+<br><br><br>
+
 <img alt="Margarita" src="margarita.jpg" align=left>	
 <a name="Margarita"></a> 
 <font size = 5>Margarita:</font><br>
-	<b>Ingredients</b><br>
-	1 1/2 part Tequila<br>
-	1 part Lime Juice<br>
-	1/2 part Triple Sec<br>
-	1/5 part Powdered Sugar<br>
+<?php
+//get drink id
+$drink_name_query = "SELECT drink_id FROM mix_drinks WHERE drink_name = 'Margarita'";
+$drink_name_result = mysqli_query($db, $drink_name_query)
+	or die("Error Querying Database");
+while($drink_name_row = mysqli_fetch_array($drink_name_result)){
+	$drink = $drink_name_row['drink_id'];
+} 
+//get drink ingredients
+$query = "SELECT ingredient, ingredient_amount FROM ingredients WHERE drink_id = '$drink'";
+$result = mysqli_query($db, $query)
+	or die("Error Querying Database1");
+echo "<table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
+while($row = mysqli_fetch_array($result)){
+	$ingredients = $row['ingredient'];
+	$amount = $row['ingredient_amount'];	
+	echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";	
+}
+echo "</table>\n" 
+?>
+
 <br><br><br><br>
+
 <img alt="Martini" src="martini.jpg" align=left>	
 <a name="Martini"></a> 
 <font size = 5>Martini:</font><br>
-	<b>Ingredients</b><br>
-	2 parts Gin<br>
-	1/5 part Dry Vermouth<br>
+<?php
+//get drink id
+$drink_name_query = "SELECT drink_id FROM mix_drinks WHERE drink_name = 'Martini'";
+$drink_name_result = mysqli_query($db, $drink_name_query)
+	or die("Error Querying Database");
+while($drink_name_row = mysqli_fetch_array($drink_name_result)){
+	$drink = $drink_name_row['drink_id'];
+} 
+//get drink ingredients
+$query = "SELECT ingredient, ingredient_amount FROM ingredients WHERE drink_id = '$drink'";
+$result = mysqli_query($db, $query)
+	or die("Error Querying Database1");
+echo "<table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
+while($row = mysqli_fetch_array($result)){
+	$ingredients = $row['ingredient'];
+	$amount = $row['ingredient_amount'];	
+	echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";	
+}
+echo "</table>\n" 
+?>
+
 <br><br><br>
+
 <img alt="Sex on the Beach" src="beach.jpg" align=left>	
 <a name="Beach"></a> 
 <font size = 5>Sex on the Beach:</font><br>
-	<b>Ingredients</b><br>
-	1 part Vodka<br>
-	3/4 part Peach Schnapps<br>
-	3/4 part Cranberry Juice<br>
-	3/4 part Grapefruit Juice<br>
+<?php
+//get drink id
+$drink_name_query = "SELECT drink_id FROM mix_drinks WHERE drink_name = 'Sex on the Beach'";
+$drink_name_result = mysqli_query($db, $drink_name_query)
+	or die("Error Querying Database");
+while($drink_name_row = mysqli_fetch_array($drink_name_result)){
+	$drink = $drink_name_row['drink_id'];
+} 
+//get drink ingredients
+$query = "SELECT ingredient, ingredient_amount FROM ingredients WHERE drink_id = '$drink'";
+$result = mysqli_query($db, $query)
+	or die("Error Querying Database1");
+echo "<table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
+while($row = mysqli_fetch_array($result)){
+	$ingredients = $row['ingredient'];
+	$amount = $row['ingredient_amount'];	
+	echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";	
+}
+echo "</table>\n" 
+?>
+
 <br><br><br><br>
 
 
