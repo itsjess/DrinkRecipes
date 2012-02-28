@@ -1,0 +1,25 @@
+Drink Recipes Website
+CPSC 350 - Databases
+
+Team Members:
+JC Cheek
+Keelin Haw
+Chris Joyner
+Kurt Wall
+Jessica White
+
+Instructions for Download:
+
+Option 1: Git Bash
+Step 1: Browse to your xampp/htdocs folder.
+Step 2: Clone the repository using: git clone http://github.com/itsjess/DrinkRecipes
+Step 3: Import drinks.sql in phpMyAdmin.
+Step 4: Access the site at URL: localhost/DrinkRecipes/
+
+Option 2: Download zip or tar file
+Step 1: Go to http://github.com/itsjess/DrinkRecipes/downloads
+Step 2: Download either the zip or tar.gz file.
+Step 3: Create a folder in xampp/htdocs called DrinkRecipes.
+Step 4: Extract the files from the zip/tar file into xampp/htdocs/DrinkRecipes.
+Step 5: Import drinks.sql in phpMyAdmin.
+Step 6: Access the site at URL: localhost/DrinkRecipes/
