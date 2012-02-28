@@ -22,12 +22,15 @@ http://creativecommons.org/licenses/GPL/2.0/
 </head>
 
 <body>
-<div>
-  <h1>Search</h1>
-  <form method="post" action="search.php">
-	<label for="username">Search by drink name:</label>
-    <input type="text" id="search1" name="search1" />
-    <input type="submit" value="go" name="submit" />
+<div id="wrap">
+	<div id = "content-wrap">
+		<div id = "content">
+		
+		  <h1>Search</h1>
+			<form method="post" action="search.php">
+			<label for="username">Search by drink name:</label>
+		    	<input type="text" id="search1" name="search1" />
+			 <input type="submit" value="Search!" name="submit" />
   
   
   <?php
@@ -114,6 +117,8 @@ http://creativecommons.org/licenses/GPL/2.0/
   ?>
   <p>&nbsp;</p><p><a href="logout.php">logout</a></p>
   </form>
+  </div>
+  </div>
   </div>
 </body>
 </html>
