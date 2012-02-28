@@ -23,14 +23,14 @@ http://creativecommons.org/licenses/GPL/2.0/
 <body id="type-a">
 <?php
    include('header.php');
-?>
-
+	?>
 <div id="wrap">
+
+	
 	
 	<div id="content-wrap">
-	
 		<div id="content">
-		
+		<h1>Under Construction</h1>
 		
 		
 		</div>

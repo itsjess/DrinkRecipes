@@ -23,15 +23,23 @@ http://creativecommons.org/licenses/GPL/2.0/
 <body id="type-a">
 <?php
    include('header.php');
-?>
-
+	?>
 <div id="wrap">
+
+	
 	
 	<div id="content-wrap">
-	
 		<div id="content">
-		
-		
+		<h1>Register</h1>
+		<form method="post" action="registerController.php">
+			<label for="username">Username:</label>
+			<input type="text" id="username" name="username" /><br />
+			<label for="pw">Password:</label>
+			<input type="password" id="pw" name="pw" /><br />
+			<label for="zip">Zipcode:</label>
+			<input type="text" id="zip" name="zip" /><br />
+			<input type="submit" value="Register" name="submit" />
+		</form>
 		
 		</div>
 		

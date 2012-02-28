@@ -21,17 +21,36 @@ http://creativecommons.org/licenses/GPL/2.0/
 <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body id="type-a">
-<?php
-   include('header.php');
-?>
-
 <div id="wrap">
+
+	<?php
+   include('header.php');
+	?>
 	
 	<div id="content-wrap">
-	
 		<div id="content">
 		
-		
+		<?php
+					if ($_POST['username'] <> "" && $_POST['pw'] <> "" && $_POST['zip'] <> ""){
+						
+					
+					include('db_connect.php');
+					
+					$username = $_POST['username'];
+					$pw = $_POST['pw'];
+					$zip = $_POST['zip'];
+					
+					$query = "INSERT INTO users (user_name, password, zipcode) VALUES ('$username', SHA('$pw'), '$zip')";
+					$result = mysqli_query($db, $query) or die("Error querying database");
+					mysqli_close($db);
+					#$_SESSION['user']=$username; #will implement sessions later
+					header('Location: search.php');
+					}
+					else{
+						header('Location: register.php');
+					}
+					
+		?>
 		
 		</div>
 		
