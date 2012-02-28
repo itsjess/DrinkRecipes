@@ -22,7 +22,9 @@ http://creativecommons.org/licenses/GPL/2.0/
 </head>
 
 <body>
-<div>
+<div id = "wrap">
+<div id = "content-wrap">
+<div id="content">
   <h1>Search</h1>
   <form method="post" action="search.php">
 	<label for="username">Search:</label>
@@ -102,6 +104,8 @@ http://creativecommons.org/licenses/GPL/2.0/
   ?>
   <p>&nbsp;</p><p><a href="logout.php">logout</a></p>
   </form>
+  </div>
+  </div>
   </div>
 </body>
 </html>
