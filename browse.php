@@ -60,7 +60,7 @@ http://creativecommons.org/licenses/GPL/2.0/
 <a href="#Beach">[Sex on the Beach]</a> 
 <br><br></center>
 <font size=4>
-<img alt="cosmo" src="cosmo.jpg" align=left>
+<img alt="cosmo" src="images/cosmo.jpg" align=left>
 
 <a name="Cosmo"></a> 	
 <font size = 5>Cosmopolitan:</font><br>
@@ -87,7 +87,7 @@ echo "</table>\n"
 
 <br><br><br>
 
-<img alt="Long Island" src="long island.jpg" align=left>	
+<img alt="Long Island" src="images/long island.jpg" align=left>	
 <a name="Long Island"></a> 
 <font size=5>Long Island Iced Tea:</font><br>
 <?php
@@ -113,7 +113,7 @@ echo "</table>\n"
 
 <br>
 
-<img alt="daiquiri" src="daiquiri.jpg" align=left>	
+<img alt="daiquiri" src="images/daiquiri.jpg" align=left>	
 <a name="Daiquiri"></a> 
 <font size = 5>Daiquiri:</font><br>
 <?php
@@ -139,7 +139,7 @@ echo "</table>\n"
 
 <br><br><br><br>
 
-<img alt="Mai Tai" src="mai tai.jpg" align=left>	
+<img alt="Mai Tai" src="images/mai tai.jpg" align=left>	
 <a name="Mai Tai"></a> 
 <font size = 5>Mai Tai:</font><br>
 <?php
@@ -165,7 +165,7 @@ echo "</table>\n"
 
 <br>
 
-<img alt="Manhattan" src="manhattan.jpg" align=left>	
+<img alt="Manhattan" src="images/manhattan.jpg" align=left>	
 <a name="Manhattan"></a> 
 <font size = 5>Manhattan:</font><br>
 <?php
@@ -191,7 +191,7 @@ echo "</table>\n"
 
 <br><br><br><br>
 
-<img alt="Pina Colada" src="pina.jpg" align=left>
+<img alt="Pina Colada" src="images/pina.jpg" align=left>
 <a name="Pina"></a> 
 <font size =5>Pina Colada:</font><br>
 <?php
@@ -217,7 +217,7 @@ echo "</table>\n"
 
 <br><br><br>
 
-<img alt="Mojito" src="mojito.jpg" align=left>	
+<img alt="Mojito" src="images/mojito.jpg" align=left>	
 <a name="Mojito"></a> 
 <font size = 5>Mojito:</font><br>
 <?php
@@ -243,7 +243,7 @@ echo "</table>\n"
 
 <br><br><br>
 
-<img alt="Margarita" src="margarita.jpg" align=left>	
+<img alt="Margarita" src="images/margarita.jpg" align=left>	
 <a name="Margarita"></a> 
 <font size = 5>Margarita:</font><br>
 <?php
@@ -269,7 +269,7 @@ echo "</table>\n"
 
 <br><br><br><br>
 
-<img alt="Martini" src="martini.jpg" align=left>	
+<img alt="Martini" src="images/martini.jpg" align=left>	
 <a name="Martini"></a> 
 <font size = 5>Martini:</font><br>
 <?php
@@ -295,7 +295,7 @@ echo "</table>\n"
 
 <br><br><br>
 
-<img alt="Sex on the Beach" src="beach.jpg" align=left>	
+<img alt="Sex on the Beach" src="images/beach.jpg" align=left>	
 <a name="Beach"></a> 
 <font size = 5>Sex on the Beach:</font><br>
 <?php
