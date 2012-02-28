@@ -21,10 +21,11 @@ http://creativecommons.org/licenses/GPL/2.0/
 <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body id="type-a">
-<div id="wrap">
 <?php
    include('header.php');
 ?>
+<div id="wrap">
+
 	<!--<div id="header">
 		<div id="site-name">Drink Recipes</div>
 		<div id="search">
