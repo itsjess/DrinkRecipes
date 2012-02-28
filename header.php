@@ -16,7 +16,5 @@
 		</li>
 		<li><a href="browse.php">Browse</a>
 		</li>
-		<li><a href="about.php">About</a>
-		</li>
 		</ul>
 	</div>
