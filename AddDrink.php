@@ -125,12 +125,12 @@ include('header.php');
 				
 				}
 				
-				if (!empty($ingredient4) && !empty($ingredient_amount4) && is_numeric($ingredient_amount4))
+				if (!empty($ingredient5) && !empty($ingredient_amount5) && is_numeric($ingredient_amount5))
 				{
-				$create_ingredient_query = "insert into ingredients values (0, '$ingredient4', $ingredient_amount4, $drink_id)";
+				$create_ingredient_query = "insert into ingredients values (0, '$ingredient5', $ingredient_amount5, $drink_id)";
 				
 				mysqli_query($db, $create_ingredient_query)
-				or die ("Error in create ingredient 4");
+				or die ("Error in create ingredient 5");
 				
 				}
 			}
