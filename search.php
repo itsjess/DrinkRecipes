@@ -22,19 +22,17 @@ http://creativecommons.org/licenses/GPL/2.0/
 </head>
 
 <body>
-<div id="wrap">
-	<div id = "content-wrap">
-		<div id = "content">
-		
-		  <h1>Search</h1>
-			<form method="post" action="search.php">
-			<label for="username">Search by drink name:</label>
-		    	<input type="text" id="search1" name="search1" />
-			 <input type="submit" value="Search!" name="submit" />
+<div>
+  <h1>Search</h1>
+  <form method="post" action="search.php">
+	<label for="username">Search:</label>
+    <input type="text" id="search1" name="search1" />
+    <input type="submit" value="go" name="submit" />
   
   
   <?php
   include('db_connect.php');
+  require_once('appvars.php');
   
   
   if (isset($_POST['search1']))
@@ -42,83 +40,88 @@ http://creativecommons.org/licenses/GPL/2.0/
   	$searchterm = mysqli_real_escape_string($db, trim($_POST['search1']));
 
   	
-  		$drink_name_query = "select * from mix_drinks where drink_name LIKE '%$searchterm%'";
-		
+  		$query = "SELECT mix_drinks.drink_name, ingredients.ingredient, strength.strength, difficulty.difficulty, mix_drinks.image, directions.directions FROM 
+		mix_drinks inner join ingredients on mix_drinks.drink_id = ingredients.drink_id 
+		inner join difficulty on mix_drinks.difficulty_id = difficulty.difficulty_id 
+		inner join strength on mix_drinks.strength_id = strength.strength_id
+		inner join directions on mix_drinks.direction_id = directions.direction_id
+		where mix_drinks.drink_name LIKE '%$searchterm%'OR difficulty.difficulty LIKE '%$searchterm%'  OR strength.strength like '%$searchterm%' 
+		OR ingredients.ingredient like '%$searchterm%'
+		order by mix_drinks.drink_name";
   
-  		$result = mysqli_query($db, $drink_name_query)
+  		$result = mysqli_query($db, $query)
    			or die("Error Querying Database");
    		
-		echo "<table BORDER=4 CELLSPACING=4 CELLPADDING=4 id=\"hor-minimalist-b\">\n
-			<tr><th>Drink Name</th><th>Strength</th><th>Difficulty</th><th>Ingredient</th></tr>\n\n";
+		
+		$name1 = "";
 		$count = 0;
    		while($row = mysqli_fetch_array($result)) {
   			
-			
-				
 			$name = $row['drink_name'];
-			$drink_id = $row['drink_id'];
-			$strength_id = $row['strength_id'];
-			$difficulty_id = $row['difficulty_id'];
 			
-			$count++;	
-			$name = ucfirst($name);
-			echo "<tr><td>$name</td>";
-	    
-		
-			if ($count > 0)
+			if ($count == 0)
 			{
-				$drink_strength_query = "select * from strength where strength_id = '$strength_id'";
+				echo "<table BORDER=1 CELLSPACING=4 CELLPADDING=4 id=\"hor-minimalist-b\">\n
+				<tr><th>Drink Name</th><th>Image</th><th>Strength</th><th>Difficulty</th><th>Directions</th><th>Ingredient</th></tr>\n\n";
+				$strength = $row['strength'];
+				$strength = ucfirst($strength);
+				$difficulty = $row['difficulty'];
+				$difficulty = ucfirst($difficulty);
+				$ingredient = $row['ingredient'];
+				$directions = $row['directions'];
 				
-				$result_strength = mysqli_query($db, $drink_strength_query)
-				or die("Error Querying Database");
-				
-				while($row = mysqli_fetch_array($result_strength)){
-					$strength = $row['strength'];
-					$strength = ucfirst($strength);
-					echo "<td>$strength</td>";
+				echo "<tr><td>$name</td>";
+				if (is_file(GW_UPLOADPATH . $row['image']) && filesize(GW_UPLOADPATH . $row['image']) > 0) {
+					echo '<td><img src="' . GW_UPLOADPATH . $row['image'] . '" alt="Score image" /></td>';
 				}
-				
-				$drink_difficulty_query = "select * from difficulty where difficulty_id = '$difficulty_id'";
-				
-				$result_difficulty = mysqli_query($db, $drink_difficulty_query)
-				or die("Error Querying Database");
-				
-				while($row = mysqli_fetch_array($result_difficulty)){
-					$difficulty = $row['difficulty'];
-					$difficulty = ucfirst($difficulty);
-					echo "<td>$difficulty</td>";
+				else {
+					echo '<td><img src="' . GW_UPLOADPATH . 'unverified.gif' . '" alt="Unverified score" /></td>';
 				}
-				
-				$drink_ingredients_query = "select * from ingredients where drink_id = '$drink_id'";
-				
-				$result_ingredients = mysqli_query($db, $drink_ingredients_query)
-				or die("Error Querying Database");
-				
-				echo "<td>";
-				
-				while($row = mysqli_fetch_array($result_ingredients)){
-					$ingredient = $row['ingredient'];
-					echo "$ingredient, ";
-				}
-				
-				echo "</td></tr>\n\n"; 
+				echo "</td><td >$strength</td><td>$difficulty</td><td>$directions</td><td >$ingredient";
+				$count++;
 			}
+			else if ($name1 == $name)
+			{
+				$ingredient = $row['ingredient'];
+				echo ", $ingredient";
+			}
+		  	else
+			{
+				echo "</td></tr>\n";
+				$strength = $row['strength'];
+				$strength = ucfirst($strength);
+				$difficulty = $row['difficulty'];
+				$difficulty = ucfirst($difficulty);
+				$ingredient = $row['ingredient'];
+				$directions = $row['directions'];
+				
+				echo "<tr><td>$name</td>";
+				if (is_file(GW_UPLOADPATH . $row['image']) && filesize(GW_UPLOADPATH . $row['image']) > 0) {
+					echo '<td><img src="' . GW_UPLOADPATH . $row['image'] . '" alt="Score image" /></td>';
+				}
+				else {
+					echo '<td><img src="' . GW_UPLOADPATH . 'unverified.gif' . '" alt="Unverified score" /></td>';
+				}
+				echo "</td><td >$strength</td><td>$difficulty</td><td>$directions</td><td >$ingredient";
+			}
+			
+			$name1 = $row['drink_name'];
+	    }
+		
 	   
-		}
+		
 		if ($count == 0)
 		{
 			
 			echo "<table><tr><td>Search item not found</td></tr>";
 		}
-		 echo "</table>"; 
+		 echo "</table>\n"; 
   	}
   	
   
   ?>
   <p>&nbsp;</p><p><a href="logout.php">logout</a></p>
   </form>
-  </div>
-  </div>
   </div>
 </body>
 </html>
