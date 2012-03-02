@@ -16,5 +16,6 @@
 		</li>
 		<li><a href="browse.php">Browse</a>
 		</li>
+		<li><a href="AddDrink.php">Add a Drink</a>
 		</ul>
 	</div>
