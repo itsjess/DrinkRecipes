@@ -51,7 +51,12 @@ http://creativecommons.org/licenses/GPL/2.0/
 					
 					<!-- CONTENT -->
 					<h3>About Us!</h3>
-					<p>Hello! This site is for people that have a passion for making mixed drinks. We wanted to make a site that made creating drinks an even more fun and rewarding experience. Not only will you enjoy mixing much more, but you can fine tune your mixing skills and keep track of your progress while being introduced to various drink options. We hope you like it!</p>
+					<p>Hello! This site is for people that have a passion for making mixed drinks. 
+					We wanted to make a site that made creating drinks an even more fun and rewarding experience. 
+					Not only will you enjoy mixing much more, but you can fine tune your mixing skills and keep track 
+					of your progress while being introduced to various drink options. We hope you like it!
+					<img src="images/pina.jpg" />
+					</p>
 					<!-- END CONTENT -->
 		
 		
