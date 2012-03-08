@@ -49,21 +49,75 @@ http://creativecommons.org/licenses/GPL/2.0/
 
 <font size = 6><center>Browse a Listing of all of our drinks!</font><br>
 <br><font size = 3>
-<a href="#Cosmo">[Cosmopolitan]</a> 
-<a href="#Long Island">[Long Island Iced Tea]</a> 
-<a href="#Daiquiri">[Daiquiri]</a> 
-<a href="#Mai Tai">[Mai Tai]</a> 
-<a href="#Manhattan">[Manhattan]</a> 
-<a href="#Pina">[Pina Colada]</a> 
-<a href="#Mojito">[Mojito]</a> 
-<a href="#Margarita">[Margarita]</a> 
-<a href="#Martini">[Martini]</a> 
-<a href="#Beach">[Sex on the Beach]</a> 
+<a href="#a">[A]</a> 
+<a href="#b">[B]</a> 
+<a href="#c">[C]</a>
+<a href="#d">[D]</a> 
+<a href="#e">[E]</a>
+<a href="#f">[F]</a>
+<a href="#g">[G]</a>
+<a href="#h">[H]</a>
+<a href="#i">[I]</a>
+<a href="#j">[J]</a>
+<a href="#k">[K]</a>
+<a href="#l">[L]</a>
+<a href="#m">[M]</a> 
+<a href="#n">[N]</a>
+<a href="#o">[O]</a>
+<a href="#p">[P]</a> 
+<a href="#q">[Q]</a> 
+<a href="#r">[R]</a>
+<a href="#s">[S]</a> 
+<a href="#t">[T]</a>
+<a href="#u">[U]</a>
+<a href="#v">[V]</a>
+<a href="#w">[W]</a>
+<a href="#x">[X]</a>
+<a href="#y">[Y]</a>
+<a href="#z">[Z]</a>
+
 <br><br></center>
 <font size=4>
-<img alt="cosmo" src="images/cosmo.jpg" align=left>
 
-<a name="Cosmo"></a> 	
+<a name="a"></a>
+<?php
+//count through letters
+foreach(range('A','Z') as $i) {
+	//header
+        echo "<h2>$i</h2>";
+	//get the drink by each letter
+        $query = "SELECT * FROM mix_drinks WHERE drink_name LIKE '$i%' order by drink_name";
+	$result = mysqli_query($db, $query)
+		or die("Error Querying Database A");
+	while($row = mysqli_fetch_array($result)){
+		//print drink name        		
+		$id = $row['drink_id'];
+       		$name = $row['drink_name'];
+       		//$pictureURL = $row['picture'];
+       		//$ingredients = $row['ingredients'];
+       		//echo "<img src=\"$pictureURL\" />";
+       		echo "<h5>$name</h5>";
+		$query_ing = "SELECT ingredient, ingredient_amount FROM ingredients WHERE drink_id =$id";
+		$result_ing = mysqli_query($db, $query_ing)
+			or die("Error Querying Database A");
+		echo "<table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
+		while($row_ing = mysqli_fetch_array($result_ing)){
+       			$ingredients = $row_ing['ingredient'];
+			$amount = $row_ing['ingredient_amount'];	
+			echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";
+		}	
+    	}
+}
+?>
+
+<br><br>
+
+<a name="b"></a>
+
+<br><br>
+
+<a name="c"></a>
+<img alt="cosmo" src="images/cosmo.jpg" align=left> 	
 <font size = 5>Cosmopolitan:</font><br>
 <?php
 //get drink id
@@ -87,9 +141,9 @@ echo "</table>\n"
 ?>
 
 <br><br><br>
+<a name="Long Island"></a> 
 
 <img alt="Long Island" src="images/long island.jpg" align=left>	
-<a name="Long Island"></a> 
 <font size=5>Long Island Iced Tea:</font><br>
 <?php
 //get drink id
