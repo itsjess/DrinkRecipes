@@ -104,6 +104,7 @@ foreach(range('A','Z') as $i) {
 			$amount = $row_ing['ingredient_amount'];	
 			echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";
 		}	
+		echo "</table>";
     	}
 }
 ?>
