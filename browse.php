@@ -49,32 +49,32 @@ http://creativecommons.org/licenses/GPL/2.0/
 
 <font size = 6><center>Browse a Listing of all of our drinks!</font><br>
 <br><font size = 3>
-<a href="#a">[A]</a> 
-<a href="#b">[B]</a> 
-<a href="#c">[C]</a>
-<a href="#d">[D]</a> 
-<a href="#e">[E]</a>
-<a href="#f">[F]</a>
-<a href="#g">[G]</a>
-<a href="#h">[H]</a>
-<a href="#i">[I]</a>
-<a href="#j">[J]</a>
-<a href="#k">[K]</a>
-<a href="#l">[L]</a>
-<a href="#m">[M]</a> 
-<a href="#n">[N]</a>
-<a href="#o">[O]</a>
-<a href="#p">[P]</a> 
-<a href="#q">[Q]</a> 
-<a href="#r">[R]</a>
-<a href="#s">[S]</a> 
-<a href="#t">[T]</a>
-<a href="#u">[U]</a>
-<a href="#v">[V]</a>
-<a href="#w">[W]</a>
-<a href="#x">[X]</a>
-<a href="#y">[Y]</a>
-<a href="#z">[Z]</a>
+<a href="#A">[A]</a> 
+<a href="#B">[B]</a> 
+<a href="#C">[C]</a>
+<a href="#D">[D]</a> 
+<a href="#E">[E]</a>
+<a href="#F">[F]</a>
+<a href="#G">[G]</a>
+<a href="#H">[H]</a>
+<a href="#I">[I]</a>
+<a href="#J">[J]</a>
+<a href="#K">[K]</a>
+<a href="#L">[L]</a>
+<a href="#M">[M]</a> 
+<a href="#N">[N]</a>
+<a href="#O">[O]</a>
+<a href="#P">[P]</a> 
+<a href="#Q">[Q]</a> 
+<a href="#R">[R]</a>
+<a href="#S">[S]</a> 
+<a href="#T">[T]</a>
+<a href="#U">[U]</a>
+<a href="#V">[V]</a>
+<a href="#W">[W]</a>
+<a href="#X">[X]</a>
+<a href="#Y">[Y]</a>
+<a href="#Z">[Z]</a>
 
 <br><br></center>
 <font size=4>
@@ -82,15 +82,14 @@ http://creativecommons.org/licenses/GPL/2.0/
 <?php
 //count through letters
 foreach(range('A','Z') as $i) {
-
+	//header
+	echo "<a name='$i'><h2>$i</h2></a>";
 	//get the drink by each letter
         $query = "SELECT * FROM mix_drinks WHERE drink_name LIKE '$i%' order by drink_name";
 	$result = mysqli_query($db, $query)
 		or die("Error Querying Database A");
 	while($row = mysqli_fetch_array($result)){
-		//header
-        	echo "<h2>$i</h2>";
-		echo "<a name=\"$i\"></a>";
+
 		//print drink name        		
 		$id = $row['drink_id'];
        		$name = $row['drink_name'];
@@ -103,7 +102,8 @@ foreach(range('A','Z') as $i) {
        			$ingredients = $row_ing['ingredient'];
 			$amount = $row_ing['ingredient_amount'];	
 			echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";
-		}	
+		}
+		echo "</table>";	
     	}
 }
 ?>
