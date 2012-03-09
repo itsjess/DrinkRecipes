@@ -102,13 +102,10 @@ foreach(range('A','Z') as $i) {
        			$ingredients = $row_ing['ingredient'];
 			$amount = $row_ing['ingredient_amount'];	
 			echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";
-<<<<<<< HEAD
+
 		}
 		echo "</table>";	
-=======
-		}	
-		echo "</table>";
->>>>>>> afeb668f6a28c5b72300a74ae60126504cfb31be
+
     	}
 }
 ?>
