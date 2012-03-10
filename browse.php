@@ -83,7 +83,7 @@ http://creativecommons.org/licenses/GPL/2.0/
 //count through letters
 foreach(range('A','Z') as $i) {
 	//header
-	echo "<a name='$i'><h2>$i</h2></a>";
+	echo "<a name='$i'><h2><?= $i ?> $i </h2></a>";
 	//get the drink by each letter
         $query = "SELECT * FROM mix_drinks WHERE drink_name LIKE '$i%' order by drink_name";
 	$result = mysqli_query($db, $query)
