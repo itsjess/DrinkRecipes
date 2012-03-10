@@ -93,13 +93,15 @@ foreach(range('A','Z') as $i) {
 		//print drink name        		
 		$id = $row['drink_id'];
        		$name = $row['drink_name'];
+		$image = $row['image'];
        		echo "<h5>$name</h5>";
+		echo "<img src=\"images/$image\" alt=\"Drink Image\" heaight=100 width=100>";
 		$query_ing = "SELECT ingredient, ingredient_amount FROM ingredients WHERE drink_id =$id";		
 		$result_ing = mysqli_query($db, $query_ing)
 			or die("Error Querying Database A");
 		echo "<table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
-		while($row_ing = mysqli_fetch_array($result_ing)){
-       			$ingredients = $row_ing['ingredient'];
+		while($row_ing = mysqli_fetch_array($result_ing)){       			
+			$ingredients = $row_ing['ingredient'];
 			$amount = $row_ing['ingredient_amount'];	
 			echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";
 
