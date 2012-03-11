@@ -60,6 +60,8 @@ include('header.php');
 	$strength = mysqli_real_escape_string($db, trim($_POST['strength']));
 	
 	$difficulty = mysqli_real_escape_string($db, trim($_POST['difficulty']));
+	
+	$directions = mysqli_real_escape_string($db, $_POST['directions']);
 
     if (!empty($drink_name) && 	!empty($screenshot)) {
       
@@ -133,6 +135,37 @@ include('header.php');
 				or die ("Error in create ingredient 5");
 				
 				}
+				
+				if (!empty($directions))
+				{
+					$create_directions_query = "insert into directions values (0, '$directions')";
+					
+					mysqli_query($db, $create_directions_query)
+						or die ("Error in create directions");
+					
+					$get_direction_id_query = "select direction_id from directions where directions = '$directions'";
+					
+					$result1 = mysqli_query($db, $get_direction_id_query)
+						or die ("Error in directions");
+						
+					while($row = mysqli_fetch_array($result1))
+					{
+						$direction_id = $row['direction_id'];
+					}
+					
+					$create_mix_drinks_query = "update mix_drinks set direction_id = '$direction_id' where drink_id = '$drink_id'";	
+					
+					mysqli_query($db, $create_mix_drinks_query)
+						or die ("Error in create mix drinks");
+					
+				}
+				else
+				{
+					$create_directions_query = "update mix_drinks set direction_id = 5 where drink_id = '$drink_id'";
+				
+					mysqli_query($db, $create_directions_query)
+						or die ("Error in create directions");
+				}
 			}
 			
 			
@@ -158,6 +191,8 @@ include('header.php');
 			$screenshot = "";
 			$strength = "";
 			$difficulty = "";
+			$direction_id = "";
+			$directions = "";
 
             mysqli_close($db);
           }
@@ -229,6 +264,9 @@ include('header.php');
 					<option>Strong</option>
 					</select>				
 					
+	<label for="directions">Directions:</label>
+    <textarea name="directions"> </textarea><br />	
+	
     <label for="image">Picture of Drink:</label>
     <input type="file" id="image" name="image" />
 	
