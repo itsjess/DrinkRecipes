@@ -44,6 +44,10 @@ http://creativecommons.org/licenses/GPL/2.0/
 		   else
 		   {
 				echo "<p>Incorrect username or password</p>\n";
+				echo  "<h1>Log In</h1>\n  <form method=\"post\" action=\"login.php\">";
+				echo "<label for=\"username\">Username:</label><input type=\"text\" id=\"username\" name=\"username\" /><br />";
+				echo "<label for=\"pw\">Password:</label><input type=\"password\" id=\"pw\" name=\"pw\" /><br />";
+				echo "<input type=\"submit\" value=\"Login\" name=\"submit\" /></form> <p><a href=\"register.php\">Create Account</a></p>";
 		   }
 		  }
 		  else
