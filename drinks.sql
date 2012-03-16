@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 20, 2012 at 09:23 PM
+-- Generation Time: Feb 28, 2012 at 11:22 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -146,6 +146,7 @@ CREATE TABLE IF NOT EXISTS `mix_drinks` (
   `strength_id` int(11) DEFAULT NULL,
   `difficulty_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
+  `image` varchar(50) DEFAULT 'unverified',
   PRIMARY KEY (`drink_id`),
   KEY `strength_id` (`strength_id`),
   KEY `difficulty_id` (`difficulty_id`),
@@ -156,17 +157,17 @@ CREATE TABLE IF NOT EXISTS `mix_drinks` (
 -- Dumping data for table `mix_drinks`
 --
 
-INSERT INTO `mix_drinks` (`drink_id`, `drink_name`, `direction_id`, `strength_id`, `difficulty_id`, `user_id`) VALUES
-(1, 'Cosmopolitan', 1, 2, 1, 0),
-(2, 'Long Island Iced Tea', 2, 2, 1, 0),
-(3, 'Daiquiri', 3, 2, 1, 0),
-(4, 'Mai Tai', 4, 2, 1, 0),
-(5, 'Manhattan', 5, 1, 1, 0),
-(6, 'Pina Colada', 6, 2, 1, 0),
-(7, 'Mojito', 7, 2, 2, 0),
-(8, 'Maragarita', 8, 2, 3, 0),
-(9, 'Martini', 9, 2, 2, 0),
-(10, 'Sex on the Beach', 10, 3, 1, 0);
+INSERT INTO `mix_drinks` (`drink_id`, `drink_name`, `direction_id`, `strength_id`, `difficulty_id`, `user_id`, `image`) VALUES
+(1, 'Cosmopolitan', 1, 2, 1, 0, 'cosmo.jpg'),
+(2, 'Long Island Iced Tea', 2, 2, 1, 0, 'long island.jpg'),
+(3, 'Daiquiri', 3, 2, 1, 0, 'daiquiri.jpg'),
+(4, 'Mai Tai', 4, 2, 1, 0, 'mai tai.jpg'),
+(5, 'Manhattan', 5, 1, 1, 0, 'manhattan.jpg'),
+(6, 'Pina Colada', 6, 2, 1, 0, 'pina.jpg'),
+(7, 'Mojito', 7, 2, 2, 0, 'mojito.jpg'),
+(8, 'Maragarita', 8, 2, 3, 0, 'margarita.jpg'),
+(9, 'Martini', 9, 2, 2, 0, 'martini.jpg'),
+(10, 'Sex on the Beach', 10, 3, 1, 0, 'beach.jpg');
 
 -- --------------------------------------------------------
 
@@ -199,38 +200,20 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(40) NOT NULL,
   `password` varchar(40) NOT NULL,
-  `zipcode` int(11) NOT NULL,
+  `email` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_name`, `password`, `zipcode`) VALUES
-(0, 'admin', '5a8f2d9144133bd60aac76a1bd9310ca43d4fff4', 22401);
+INSERT INTO `users` (`user_id`, `user_name`, `password`, `email`) VALUES
+(0, 'admin', '5a8f2d9144133bd60aac76a1bd9310ca43d4fff4', 'admin@email.com');
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `zipcode`
---
 
-CREATE TABLE IF NOT EXISTS `zipcode` (
-  `city` varchar(50) DEFAULT NULL,
-  `state` char(2) DEFAULT NULL,
-  `zipcode` int(11) NOT NULL,
-  PRIMARY KEY (`zipcode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `zipcode`
---
-
-INSERT INTO `zipcode` (`city`, `state`, `zipcode`) VALUES
-('Fredericksburg', 'VA', 22401);
-
---
 -- Constraints for dumped tables
 --
 

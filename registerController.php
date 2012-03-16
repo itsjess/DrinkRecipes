@@ -40,7 +40,7 @@ http://creativecommons.org/licenses/GPL/2.0/
 					$pw = $_POST['pw'];
 					$zip = $_POST['zip'];
 					
-					$query = "INSERT INTO users (user_name, password, zipcode) VALUES ('$username', SHA('$pw'), '$zip')";
+					$query = "INSERT INTO users (user_name, password, email) VALUES ('$username', SHA('$pw'), '$email')";
 					$result = mysqli_query($db, $query) or die("Error querying database");
 					mysqli_close($db);
 					#$_SESSION['user']=$username; #will implement sessions later
