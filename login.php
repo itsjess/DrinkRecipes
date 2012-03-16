@@ -27,33 +27,40 @@ http://creativecommons.org/licenses/GPL/2.0/
   include('header.php');
   include "db_connect.php";
   session_start();
-  
-  if (!empty($_POST['username'])){	
-	  $name = $_POST['username'];
-	  $pw = $_POST['pw'];
+  if (!isset($_SESSION['user_id'])){
+	  if (!empty($_POST['username'])){	
+		  $name = $_POST['username'];
+		  $pw = $_POST['pw'];
 
-	  $query = "select * from users WHERE user_name = '$name' AND password = SHA('$pw')";
-	  $result = mysqli_query($db, $query);
-	  if ($row = mysqli_fetch_array($result))
-	   {
-			$_SESSION['user_id'] = $row['user_id'];
-			echo "<p>Thanks for logging in, $name</p>\n";
-			echo "<p><a href=\"search.php\">Continue</a></p>";
-	   }
-	   else
-	   {
-			echo "<p>Incorrect username or password</p>\n";
-	   }
-	  }
-	  else
-	   {
-			echo  "<h1>Log In</h1>\n  <form method=\"post\" action=\"login.php\">";
-			echo "<label for=\"username\">Username:</label><input type=\"text\" id=\"username\" name=\"username\" /><br />";
-			echo "<label for=\"pw\">Password:</label><input type=\"password\" id=\"pw\" name=\"pw\" /><br />";
-			echo "<input type=\"submit\" value=\"Login\" name=\"submit\" /></form> <p><a href=\"register.php\">Create Account</a></p>";
-			
-	   }
-  
+		  $query = "select * from users WHERE user_name = '$name' AND password = SHA('$pw')";
+		  $result = mysqli_query($db, $query);
+		  if ($row = mysqli_fetch_array($result))
+		   {
+				$_SESSION['user_id'] = $row['user_id'];
+				$_SESSION['user_name'] = $row['user_name'];
+				echo "<p>Thanks for logging in, $name</p>\n";
+				echo "<p><a href=\"search.php\">Continue</a></p>";
+		   }
+		   else
+		   {
+				echo "<p>Incorrect username or password</p>\n";
+		   }
+		  }
+		  else
+		   {
+				echo  "<h1>Log In</h1>\n  <form method=\"post\" action=\"login.php\">";
+				echo "<label for=\"username\">Username:</label><input type=\"text\" id=\"username\" name=\"username\" /><br />";
+				echo "<label for=\"pw\">Password:</label><input type=\"password\" id=\"pw\" name=\"pw\" /><br />";
+				echo "<input type=\"submit\" value=\"Login\" name=\"submit\" /></form> <p><a href=\"register.php\">Create Account</a></p>";
+				
+		   }
+	}
+	else
+	{
+		$username = $_SESSION['user_name'];
+		echo '<p> ' . $username . ' are already loggend in.</p>';	
+		echo '<a href="logout.php">logout</a>';
+	}
 ?>
 
 <div id="wrap">

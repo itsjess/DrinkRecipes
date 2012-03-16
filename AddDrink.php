@@ -176,7 +176,8 @@ include('header.php');
 				
 
 				// Confirm success with the user
-				echo '<p>Thanks for adding a drink! It will be reviewed and added to the drink list as soon as possible.</p>';
+				$username = $_SESSION['user_name'];
+				echo ':<p>Thanks ' . $username . ' for adding a drink! It will be reviewed and added to the drink list as soon as possible.</p>';
 				echo '<p><strong>Drink Name:</strong> ' . $drink_name . '<br />';
 				echo '<img src="' . GW_UPLOADPATH . $screenshot . '" alt="Score image" /></p>';
 				echo '<p><a href="browse.php">&lt;&lt; Back to browse page</a></p>';
