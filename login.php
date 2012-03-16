@@ -22,15 +22,35 @@ http://creativecommons.org/licenses/GPL/2.0/
 </head>
 <body id="type-a">
 <?php
-   include('header.php');
-	?>
+  include('header.php');
+  include "db_connect.php";
+  $name = $_POST['username'];
+  $pw = $_POST['pw'];
+
+  $query = "select * from users WHERE username = '$name' AND password = SHA('$pw')";
+  $result = mysqli_query($db, $query);
+  if ($row = mysqli_fetch_array($result))
+   {
+   		
+   		echo "<p>Thanks for logging in, $name</p>\n";
+   		echo "<p><a href=\"search.php\">Continue</a></p>";
+   }
+  else
+   {
+  		echo "<p>Incorrect username or password</p>\n";
+   		echo  "<h1>Log In</h1>\n  <form method=\"post\" action=\"login.php\">";
+    	echo "<label for=\"username\">Username:</label><input type=\"text\" id=\"username\" name=\"username\" /><br />";
+        echo "<label for=\"pw\">Password:</label><input type=\"password\" id=\"pw\" name=\"pw\" /><br />";
+        echo "<input type=\"submit\" value=\"Login\" name=\"submit\" /></form> <p><a href=\"createAccount.php\">Create Account</a></p>";
+   }
+?>
 <div id="wrap">
 
 	
 	
 	<div id="content-wrap">
 		<div id="content">
-		<h1>Under Construction</h1>
+		<h1></h1>
 		
 		
 		</div>
