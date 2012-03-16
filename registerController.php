@@ -31,20 +31,20 @@ http://creativecommons.org/licenses/GPL/2.0/
 		<div id="content">
 		
 		<?php
-					if ($_POST['username'] <> "" && $_POST['pw'] <> "" && $_POST['zip'] <> ""){
+					if ($_POST['username'] <> "" && $_POST['pw'] <> "" && $_POST['email'] <> ""){
 						
 					
 					include('db_connect.php');
 					
 					$username = $_POST['username'];
 					$pw = $_POST['pw'];
-					$zip = $_POST['zip'];
+					$email = $_POST['email'];
 					
-					$query = "INSERT INTO users (user_name, password, email) VALUES ('$username', SHA('$pw'), '$email')";
+					$query = "INSERT INTO users VALUES (0, '$username', SHA('$pw'), '$email')";
 					$result = mysqli_query($db, $query) or die("Error querying database");
 					mysqli_close($db);
-					#$_SESSION['user']=$username; #will implement sessions later
-					header('Location: search.php');
+					
+					header('Location: login.php');
 					}
 					else{
 						header('Location: register.php');

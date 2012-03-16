@@ -107,6 +107,7 @@ http://creativecommons.org/licenses/GPL/2.0/
 			
 			$name1 = $row['drink_name'];
 	    }
+			mysqli_close($db);
 		
 	   
 		
