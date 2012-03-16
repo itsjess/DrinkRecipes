@@ -36,8 +36,8 @@ http://creativecommons.org/licenses/GPL/2.0/
 			<input type="text" id="username" name="username" /><br />
 			<label for="pw">Password:</label>
 			<input type="password" id="pw" name="pw" /><br />
-			<label for="zip">Zipcode:</label>
-			<input type="text" id="zip" name="zip" /><br />
+			<label for="email">E-mail:</label>
+			<input type="text" id="email" name="email" /><br />
 			<input type="submit" value="Register" name="submit" />
 		</form>
 		
