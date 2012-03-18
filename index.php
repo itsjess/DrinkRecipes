@@ -10,6 +10,7 @@ http://creativecommons.org/licenses/by/2.5/
 License: Released Under the "GNU Creative Commons License", 
 http://creativecommons.org/licenses/GPL/2.0/
 -->
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Drink Recipes</title>
@@ -24,18 +25,15 @@ http://creativecommons.org/licenses/GPL/2.0/
 <?php
    include('header.php');
 ?>
-
 <div id="wrap">
 	
 	<div id="content-wrap">
 	
 		<div id="content">
 		
-		
+						
 		
 		</div>
-		
-		
 		
 	</div>
 

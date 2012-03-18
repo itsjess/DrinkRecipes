@@ -23,8 +23,15 @@ http://creativecommons.org/licenses/GPL/2.0/
 <body id="type-a">
 
 <?php
+	include('header.php');
+?>
+
+
+<div id="wrap">
+<div id="content-wrap">
+<div id="content">
+<?php
   
-  include('header.php');
   include "db_connect.php";
   session_start();
   if (!isset($_SESSION['user_id'])){
@@ -67,19 +74,8 @@ http://creativecommons.org/licenses/GPL/2.0/
 	}
 ?>
 
-<div id="wrap">
-
-	
-	
-	<div id="content-wrap">
-		<div id="content">
-		<h1></h1>
-		
-		
 		</div>
-		
-		
-		
+			
 	</div>
 
 </div>

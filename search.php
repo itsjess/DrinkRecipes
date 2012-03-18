@@ -10,14 +10,25 @@ http://creativecommons.org/licenses/by/2.5/
 License: Released Under the "GNU Creative Commons License", 
 http://creativecommons.org/licenses/GPL/2.0/
 -->
- 
-	
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Drink Recipes</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="css/ie6_or_less.css" />
+<![endif]-->
+<script type="text/javascript" src="js/common.js"></script>
+</head>
+<body id="type-a">
 <?php
-   include('index.php');
+   include('header.php');
 ?>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>Search</title>
+ 
+<div id="wrap">
+<div id="content-wrap">
+<div id="content">
+
   
 </head>
 
