@@ -31,6 +31,14 @@ http://creativecommons.org/licenses/GPL/2.0/
 	<div id="content-wrap">
 		<div id="content">
 		<h1>Register</h1>
+		<?php
+			if(isset($_GET["error"])){
+				echo "The username you selected is already taken.";
+			}
+			if(isset($_GET["missing"])){
+				echo "Please fill out all fields.";
+			}
+		?>
 		<form method="post" action="registerController.php">
 			<label for="username">Username:</label>
 			<input type="text" id="username" name="username" /><br />

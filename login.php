@@ -21,10 +21,19 @@ http://creativecommons.org/licenses/GPL/2.0/
 <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body id="type-a">
+<?php
+include('header.php');
+?>
+<div id="wrap">
 
+	
+	
+	<div id="content-wrap">
+		<div id="content">
+		
 <?php
   
-  include('header.php');
+  
   include "db_connect.php";
   session_start();
   if (!isset($_SESSION['user_id'])){
@@ -62,18 +71,12 @@ http://creativecommons.org/licenses/GPL/2.0/
 	else
 	{
 		$username = $_SESSION['user_name'];
-		echo '<p> ' . $username . ' are already loggend in.</p>';	
+		echo '<p> ' . $username . ' are already logged in.</p>';	
 		echo '<a href="logout.php">logout</a>';
 	}
 ?>
 
-<div id="wrap">
 
-	
-	
-	<div id="content-wrap">
-		<div id="content">
-		<h1></h1>
 		
 		
 		</div>

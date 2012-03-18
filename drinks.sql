@@ -198,7 +198,7 @@ INSERT INTO `strength` (`strength_id`, `strength`) VALUES
 
 CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(40) NOT NULL,
+  `user_name` varchar(40) NOT NULL UNIQUE,
   `password` varchar(40) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`user_id`)

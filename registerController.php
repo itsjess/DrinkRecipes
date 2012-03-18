@@ -21,11 +21,12 @@ http://creativecommons.org/licenses/GPL/2.0/
 <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body id="type-a">
-<div id="wrap">
-
-	<?php
+<?php
    include('header.php');
 	?>
+<div id="wrap">
+
+	
 	
 	<div id="content-wrap">
 		<div id="content">
@@ -40,14 +41,30 @@ http://creativecommons.org/licenses/GPL/2.0/
 					$pw = $_POST['pw'];
 					$email = $_POST['email'];
 					
-					$query = "INSERT INTO users VALUES (0, '$username', SHA('$pw'), '$email')";
-					$result = mysqli_query($db, $query) or die("Error querying database");
+					$checkExistsQuery = "SELECT COUNT(*) AS total FROM users WHERE user_name = '$username'";
+					$existsResult = mysqli_query($db, $checkExistsQuery) or die("Could not check if user already exists.");
+					
+					if($row = mysqli_fetch_array($existsResult))
+					{
+						if ($row['total'] > 0)
+						{
+							#user already exists, so redirect back to register.php to display error message
+							header('Location: register.php?error=true');
+						}
+						else
+						{
+							#insert user information into db
+							$query = "INSERT INTO users VALUES (0, '$username', SHA('$pw'), '$email')";
+							$result = mysqli_query($db, $query) or die("Error querying database");
+						}
+						
+					}
 					mysqli_close($db);
 					
 					header('Location: login.php');
 					}
 					else{
-						header('Location: register.php');
+						header('Location: register.php?missing=true');
 					}
 					
 		?>

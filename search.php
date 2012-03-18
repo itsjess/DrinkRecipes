@@ -13,16 +13,22 @@ http://creativecommons.org/licenses/GPL/2.0/
  
 	
 <head>
-<?php
-   include('index.php');
-?>
+
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Search</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
   
 </head>
 
-<body>
-<div>
+<body id="type-a">
+<?php
+   include('header.php');
+?>
+<div id="wrap">
+<div id="content-wrap">
+<div id="content">
+
   <h1>Search</h1>
   <form method="post" action="search.php">
 	<label for="username">Search:</label>
@@ -123,6 +129,8 @@ http://creativecommons.org/licenses/GPL/2.0/
   ?>
   <p>&nbsp;</p><p><a href="logout.php">logout</a></p>
   </form>
+  </div>
+  </div>
   </div>
 </body>
 </html>
