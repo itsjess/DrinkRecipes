@@ -25,7 +25,12 @@ http://creativecommons.org/licenses/GPL/2.0/
 <?php
 	include('header.php');
 ?>
+<div id="wrap">
+<div id="content-wrap">
+<div id="content">
+
 <h1>Logout</h1>
+
 <?php
 	session_start();
 	unset($_SESSION['user_id']);
@@ -35,7 +40,10 @@ http://creativecommons.org/licenses/GPL/2.0/
 	session_destroy();
   
 ?>
-  
+ 
+ </div>
+ </div>
+ </div>
  
 </body>
 </html>
