@@ -32,7 +32,7 @@ http://creativecommons.org/licenses/GPL/2.0/
 <h1>Logout</h1>
 
 <?php
-	session_start();
+	
 	unset($_SESSION['user_id']);
 	unset($_SESSION['user_name']);
 
