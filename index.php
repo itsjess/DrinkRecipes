@@ -10,6 +10,7 @@ http://creativecommons.org/licenses/by/2.5/
 License: Released Under the "GNU Creative Commons License", 
 http://creativecommons.org/licenses/GPL/2.0/
 -->
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Drink Recipes</title>
@@ -24,18 +25,25 @@ http://creativecommons.org/licenses/GPL/2.0/
 <?php
    include('header.php');
 ?>
-
 <div id="wrap">
 	
 	<div id="content-wrap">
 	
 		<div id="content">
 		
-		
+			<font face = "century gothic">
+			<h1>Welcome to Drink Recipes!</h1>
+			<font size = 5><center>
+				Browse the <i>coolest</i> drinks!
+				</br>
+				<a href = "browse.php#Pina Colada"><img src="images/pina.jpg" height=150 width=auto /></a>
+				<a href = "browse.php#Sex on the Beach"><img src="images/beach.jpg" height=150 width=auto /></a>
+				<a href = "browse.php#Mai Tai"><img src="images/mai tai.jpg" height=150 width=auto /></a>
+				<a href = "browse.php#Long Island Iced Tea"><img src="images/long island.jpg" height=150 width=auto /></a>
+				<a href = "browse.php#Mojito"><img src="images/mojito.jpg" height=150 width=auto /></a>
+			</font></center>
 		
 		</div>
-		
-		
 		
 	</div>
 

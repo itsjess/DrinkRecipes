@@ -94,8 +94,8 @@ foreach(range('A','Z') as $i) {
 		$id = $row['drink_id'];
        		$name = $row['drink_name'];
 		$image = $row['image'];
-       		echo "<h5>$name</h5>";
-		echo "<img src=\"images/$image\" alt=\"Drink Image\" heaight=100 width=100>";
+       		echo "<a name='$name'><h5>$name</h5></a>";
+		echo "<img src=\"images/$image\" alt=\"Drink Image\" height=100 width=100>";
 		$query_ing = "SELECT ingredient, ingredient_amount FROM ingredients WHERE drink_id =$id";		
 		$result_ing = mysqli_query($db, $query_ing)
 			or die("Error Querying Database A");

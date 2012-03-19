@@ -25,14 +25,10 @@ http://creativecommons.org/licenses/GPL/2.0/
 include('header.php');
 ?>
 <div id="wrap">
-
-	
-	
-	<div id="content-wrap">
-		<div id="content">
+<div id="content-wrap">
+<div id="content">
 		
 <?php
-  
   
   include "db_connect.php";
   
@@ -76,13 +72,8 @@ include('header.php');
 	}
 ?>
 
-
-		
-		
 		</div>
-		
-		
-		
+			
 	</div>
 
 </div>
