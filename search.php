@@ -127,7 +127,7 @@ http://creativecommons.org/licenses/GPL/2.0/
   	
   
   ?>
-  <p>&nbsp;</p><p><a href="logout.php">logout</a></p>
+ 
   </form>
   </div>
   </div>

@@ -29,17 +29,29 @@ http://creativecommons.org/licenses/GPL/2.0/
 <div id="content-wrap">
 <div id="content">
 
-<h1>Logout</h1>
-
 <?php
-	
-	unset($_SESSION['user_id']);
-	unset($_SESSION['user_name']);
+	if (isset($_SESSION['user_id'])) {
+    // Delete the session vars by clearing the $_SESSION array
+    $_SESSION = array();
 
-	echo "<p>You are logged out<p>";
-	session_destroy();
-  
+    // Delete the session cookie by setting its expiration to an hour ago (3600)
+    if (isset($_COOKIE[session_name()])) {
+      setcookie(session_name(), '', time() - 3600);
+    }
+
+    // Destroy the session
+    session_destroy();
+  }
+
+  // Delete the user ID and username cookies by setting their expirations to an hour ago (3600)
+  setcookie('user_id', '', time() - 3600);
+  setcookie('username', '', time() - 3600);
+
+  // Redirect to the home page
+  $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/index.php';
+  header('Location: ' . $home_url);
 ?>
+  
  
  </div>
  </div>

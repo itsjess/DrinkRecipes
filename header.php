@@ -1,6 +1,7 @@
 <?php
 session_start();
 $page = $_SERVER["PHP_SELF"]
+
 ?>
 <div id="header">
 		<div id="site-name">Drink Recipes</div>
@@ -12,6 +13,7 @@ $page = $_SERVER["PHP_SELF"]
 		<li <?php if($page=="/DrinkRecipes/about.php"){echo"class=\"active\"";}?>><a href="about.php">About Us</a>
 		</li>
 		<?php
+			include('CookieCheck.php');
 			if (isset($_SESSION['user_id'])&& !($page=="/DrinkRecipes/logout.php")){
 				if($page=="/DrinkRecipes/profile.php"){echo "<li class=\"active\"><a href=\"profile.php\">Profile</a></li>";}
 				else{echo "<li><a href=\"profile.php\">Profile</a></li>";}
@@ -31,5 +33,6 @@ $page = $_SERVER["PHP_SELF"]
 		</li>
 		<li <?php if($page=="/DrinkRecipes/AddDrink.php"){echo"class=\"active\"";}?>><a href="AddDrink.php">Add a Drink</a>
 		</ul>
+		
 	</div>
 	

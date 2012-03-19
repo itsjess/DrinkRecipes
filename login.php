@@ -33,7 +33,7 @@ include('header.php');
   include "db_connect.php";
   
   if (!isset($_SESSION['user_id'])){
-	  if (!empty($_POST['username'])){	
+	  if (!empty($_POST['username'])  && !empty($_POST['pw'])){	
 		  $name = $_POST['username'];
 		  $pw = $_POST['pw'];
 
@@ -43,6 +43,8 @@ include('header.php');
 		   {
 				$_SESSION['user_id'] = $row['user_id'];
 				$_SESSION['user_name'] = $row['user_name'];
+				setcookie('user_id', $row['user_id'], time() + (60 * 60 * 24 * 30));    // expires in 30 days
+				setcookie('user_name', $row['user_name'], time() + (60 * 60 * 24 * 30));  // expires in 30 days
 				echo "<p>Thanks for logging in, $name</p>\n";
 				echo "<p><a href=\"search.php\">Continue</a></p>";
 		   }
