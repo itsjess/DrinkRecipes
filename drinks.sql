@@ -211,6 +211,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`user_id`, `user_name`, `password`, `email`) VALUES
 (0, 'admin', '5a8f2d9144133bd60aac76a1bd9310ca43d4fff4', 'admin@email.com');
 
+
 -- --------------------------------------------------------
 
 
@@ -230,6 +231,23 @@ ALTER TABLE `mix_drinks`
   ADD CONSTRAINT `mix_drinks_ibfk_2` FOREIGN KEY (`strength_id`) REFERENCES `strength` (`strength_id`),
   ADD CONSTRAINT `mix_drinks_ibfk_3` FOREIGN KEY (`difficulty_id`) REFERENCES `difficulty` (`difficulty_id`),
   ADD CONSTRAINT `mix_drinks_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+  --
+-- Table structure for table `junction`
+--
+
+CREATE TABLE IF NOT EXISTS `junction`(
+
+    `user_id` int(11) NOT NULL,
+    `drink_id` int(11) NOT NULL,
+    CONSTRAINT PK_UserDrinks PRIMARY KEY
+    (
+        user_id,
+        drink_id
+    ),
+    FOREIGN KEY (user_id) REFERENCES users (user_id),
+    FOREIGN KEY (drink_id) REFERENCES mix_drinks (drink_id)
+);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
