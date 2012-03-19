@@ -33,7 +33,7 @@ include('header.php');
 	
     require_once('appvars.php');
 	include('db_connect.php');
-	session_start();
+	
 	
 	if (isset($_POST['submit'])) {
 		
