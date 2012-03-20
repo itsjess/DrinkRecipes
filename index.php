@@ -33,14 +33,18 @@ http://creativecommons.org/licenses/GPL/2.0/
 		
 			<font face = "century gothic">
 			<h1>Welcome to Drink Recipes!</h1>
+			<font size = 5><a href = "login.php" style = "text-decoration:none"><font color = CC0033>Login</a></font> or <a href = "register.php" style = "text-decoration: none"><font color = CC0033>Register</a></font> to get started!</font>
+			</br>
 			<font size = 5><center>
-				Browse the <i>coolest</i> drinks!
 				</br>
-				<a href = "browse.php#Pina Colada"><img src="images/pina.jpg" height=150 width=auto /></a>
-				<a href = "browse.php#Sex on the Beach"><img src="images/beach.jpg" height=150 width=auto /></a>
-				<a href = "browse.php#Mai Tai"><img src="images/mai tai.jpg" height=150 width=auto /></a>
-				<a href = "browse.php#Long Island Iced Tea"><img src="images/long island.jpg" height=150 width=auto /></a>
-				<a href = "browse.php#Mojito"><img src="images/mojito.jpg" height=150 width=auto /></a>
+				<a href = "browse.php#Pina Colada"><img src="images/pina.jpg" height=150 width=auto title = "Pina Colada"/></a>
+				<a href = "browse.php#Sex on the Beach"><img src="images/beach.jpg" height=150 width=auto title = "Sex on the Beach"/></a>
+				<a href = "browse.php#Mai Tai"><img src="images/mai tai.jpg" height=150 width=auto title = "Mai Tai"/></a>
+				<a href = "browse.php#Long Island Iced Tea"><img src="images/long island.jpg" height=150 width=auto title = "Long Island Iced Tea"/></a>
+				<a href = "browse.php#Mojito"><img src="images/mojito.jpg" height=150 width=auto title = "Mojito"/></a>
+				</br> 
+				Browse the <i>coolest</i> drinks!</br>
+				Master drinks and earn points!
 			</font></center>
 		
 		</div>
