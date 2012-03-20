@@ -24,35 +24,43 @@ http://creativecommons.org/licenses/GPL/2.0/
 <body id="type-a">
 <?php
    include('header.php');
-   if (!isset($_SESSION['user_id'])){
-	header('Location: login.php');
-   }
 ?>
 <div id="wrap">
 	
 	<div id="content-wrap">
 	
 		<div id="content">
+		
 			<?php
-			$username = $_SESSION['user_name'];
-			echo "<h2>Welcome to your profile, ".$username."!</h2>\n";
-			
 			include "db_connect.php";
-			$query = "SELECT junction.user_id, SUM(points) AS Points
-				FROM junction
-				JOIN users ON users.user_id = junction.user_id
-				JOIN mix_drinks ON mix_drinks.drink_id = junction.drink_id
-				JOIN difficulty ON mix_drinks.difficulty_id = difficulty.difficulty_id
-				WHERE user_name = '$username';
-				";
-			$result = mysqli_query($db, $query);
-			if ($row = mysqli_fetch_array($result))
-			{
-				$points = $row['Points'];
-				echo "You have earned ".$points." points so far.\n";
+			
+			if(isset($_GET["drink"])){
+				if(isset($_SESSION['user_id'])){
+					$id = $_SESSION['user_id'];
+					$drinkName = $_GET['drink'];
+					$query = "SELECT drink_id FROM mix_drinks
+							WHERE drink_name = '$drinkName'";
+					$result = mysqli_query($db, $query) or die("Error querying database");
+					if ($row = mysqli_fetch_array($result))
+					{
+						$drinkId = $row['drink_id'];
+						$query2 = "INSERT INTO junction VALUES ('$id', '$drinkId')";
+						$result2 = mysqli_query($db, $query2) or die ("Error entering into junction table.");
+						mysqli_close($db);
+						header('Location: search.php');
+						
+					}
+
+				}
+				else{
+					header('Location: login.php');
+				}
+				
+			}
+			else{
+				header('Location: search.php');
 			}
 			?>
-			
 		
 		</div>
 		

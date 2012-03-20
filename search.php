@@ -39,6 +39,19 @@ http://creativecommons.org/licenses/GPL/2.0/
   <?php
   include('db_connect.php');
   require_once('appvars.php');
+  if(isset($_SESSION['user_id'])){
+		$username = $_SESSION['user_name'];
+		$completedDrinksQuery = "SELECT user_name AS User, drink_name AS Drink
+						FROM junction
+						JOIN users ON users.user_id = junction.user_id
+						JOIN mix_drinks ON mix_drinks.drink_id = junction.drink_id
+						WHERE user_name = '$username'";
+		$completedDrinksResult = mysqli_query($db, $completedDrinksQuery) or die ("Could not get completed drinks.");
+		$myDrinks = array();
+		while($drinksRow = mysqli_fetch_array($completedDrinksResult)){
+			array_push($myDrinks, $drinksRow['Drink']);
+		}
+	}
   
   
   if (isset($_POST['search1']))
@@ -68,7 +81,9 @@ http://creativecommons.org/licenses/GPL/2.0/
 			if ($count == 0)
 			{
 				echo "<table BORDER=1 CELLSPACING=4 CELLPADDING=4 id=\"hor-minimalist-b\">\n
-				<tr><th>Drink Name</th><th>Image</th><th>Strength</th><th>Difficulty</th><th>Directions</th><th>Ingredient</th></tr>\n\n";
+				<tr><th>Drink Name</th><th>Image</th><th>Strength</th><th>Difficulty</th><th>Directions</th><th>Ingredient</th>";
+				if (isset($_SESSION['user_id'])){ echo "<th>Completed?</th>";}
+				echo "</tr>\n\n";
 				$strength = $row['strength'];
 				$strength = ucfirst($strength);
 				$difficulty = $row['difficulty'];
@@ -90,10 +105,20 @@ http://creativecommons.org/licenses/GPL/2.0/
 			{
 				$ingredient = $row['ingredient'];
 				echo ", $ingredient";
+				
 			}
 		  	else
 			{
-				echo "</td></tr>\n";
+				echo "</td>";
+				if(isset($_SESSION['user_id'])){
+				if (in_array($name1, $myDrinks)) {
+						echo "<td>Already Completed!</td>";
+				}
+				else{
+							echo "<td><a href=\"madeDrink.php?drink=$name1\">I Made This</a></td>";
+				}
+				}	
+				echo "</tr>\n";
 				$strength = $row['strength'];
 				$strength = ucfirst($strength);
 				$difficulty = $row['difficulty'];
@@ -109,10 +134,27 @@ http://creativecommons.org/licenses/GPL/2.0/
 					echo '<td><img src="' . GW_UPLOADPATH . 'unverified.gif' . '" alt="Unverified score" /></td>';
 				}
 				echo "</td><td >$strength</td><td>$difficulty</td><td>$directions</td><td >$ingredient";
+				
 			}
 			
 			$name1 = $row['drink_name'];
 	    }
+		if($count > 0)
+		{
+			if (isset($_SESSION['user_id'])){
+				if (in_array($name1, $myDrinks)) {
+						echo "<td>Already Completed!</td>";
+				}
+				else{
+							echo "<td><a href=\"madeDrink.php?drink=$name1\">I Made This</a></td>";
+				}
+						
+					
+				
+				
+			
+			}
+		}
 			mysqli_close($db);
 		
 	   
@@ -127,7 +169,7 @@ http://creativecommons.org/licenses/GPL/2.0/
   	
   
   ?>
- 
+  
   </form>
   </div>
   </div>
