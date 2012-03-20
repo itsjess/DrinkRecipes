@@ -49,6 +49,9 @@ http://creativecommons.org/licenses/GPL/2.0/
 			if ($row = mysqli_fetch_array($result))
 			{
 				$points = $row['Points'];
+				if(is_null($points)){
+					$points = 0;
+				}
 				echo "You have earned ".$points." points so far.\n";
 			}
 			?>
