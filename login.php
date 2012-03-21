@@ -62,7 +62,7 @@ include('header.php');
 				echo  "<h1>Log In</h1>\n  <form method=\"post\" action=\"login.php\">";
 				echo "<label for=\"username\">Username:</label><input type=\"text\" id=\"username\" name=\"username\" /><br />";
 				echo "<label for=\"pw\">Password:</label><input type=\"password\" id=\"pw\" name=\"pw\" /><br />";
-				echo "<input type=\"submit\" value=\"Login\" name=\"submit\" /></form> <p><a href=\"register.php\">Create Account</a></p>";
+				echo "<input type=\"submit\" value=\"Login\" name=\"submit\" /></form>";
 				
 		   }
 	}
