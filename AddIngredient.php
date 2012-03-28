@@ -65,7 +65,7 @@ include('header.php');
 					
 					mysqli_query($db, $create_drink_query)
 					or die ("Error in create drinks");
-						
+					
 					$_SESSION['drink_name'] = $drink_name;
 					$_SESSION['screenshot'] = $screenshot;
 					
@@ -77,7 +77,37 @@ include('header.php');
 					while($row = mysqli_fetch_array($result))
 					{
 						$_SESSION['drink_id'] = $row['drink_id'];	
+						$drink_id = $row['drink_id'];
 					}
+					if (!empty($directions))
+					{
+						$create_directions_query = "insert into directions values (0, '$directions')";
+				
+						mysqli_query($db, $create_directions_query)
+						 or die ("Error in create directions");
+					   
+						$get_direction_id_query = "select direction_id from directions where directions = '$directions'";
+				
+						$result1 = mysqli_query($db, $get_direction_id_query)
+						 or die ("Error in directions");
+				
+						while($row = mysqli_fetch_array($result1))
+						{
+						  $direction_id = $row['direction_id'];
+						}
+					   $create_mix_drinks_query = "update mix_drinks set direction_id = '$direction_id' where drink_id = '$drink_id'";  
+				
+					   mysqli_query($db, $create_mix_drinks_query)
+						  or die ("Error in create mix drinks");
+					}
+					else
+					{
+					   $create_directions_query = "update mix_drinks set direction_id = 5 where drink_id = '$drink_id'";
+				
+					   mysqli_query($db, $create_directions_query)
+						 or die ("Error in create directions");	
+					}	
+					
 				}
 				else {
 					  echo '<p class="error">Please enter correct information to add a drink.</p>';
