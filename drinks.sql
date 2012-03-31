@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 28, 2012 at 11:22 PM
+-- Generation Time: Apr 01, 2012 at 12:34 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -19,9 +19,10 @@ SET time_zone = "+00:00";
 --
 -- Database: `drinks`
 --
-CREATE DATABASE IF NOT EXISTS drinks;
+CREATE DATABASE `drinks` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 GRANT ALL PRIVILEGES ON drinks.* to 'admin'@'localhost' identified by 'drinks';
-USE drinks;
+USE `drinks`;
+
 -- --------------------------------------------------------
 
 --
@@ -136,6 +137,19 @@ INSERT INTO `ingredients` (`ingredient_id`, `ingredient`, `ingredient_amount`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `junction`
+--
+
+CREATE TABLE IF NOT EXISTS `junction` (
+  `user_id` int(11) NOT NULL,
+  `drink_id` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`,`drink_id`),
+  KEY `drink_id` (`drink_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mix_drinks`
 --
 
@@ -150,7 +164,8 @@ CREATE TABLE IF NOT EXISTS `mix_drinks` (
   PRIMARY KEY (`drink_id`),
   KEY `strength_id` (`strength_id`),
   KEY `difficulty_id` (`difficulty_id`),
-  KEY `user_id` (`user_id`)
+  KEY `user_id` (`user_id`),
+  KEY `mix_drink_names` (`drink_name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
@@ -198,10 +213,11 @@ INSERT INTO `strength` (`strength_id`, `strength`) VALUES
 
 CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(40) NOT NULL UNIQUE,
+  `user_name` varchar(40) NOT NULL,
   `password` varchar(40) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_name` (`user_name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
@@ -211,10 +227,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`user_id`, `user_name`, `password`, `email`) VALUES
 (0, 'admin', '5a8f2d9144133bd60aac76a1bd9310ca43d4fff4', 'admin@email.com');
 
-
--- --------------------------------------------------------
-
-
+--
 -- Constraints for dumped tables
 --
 
@@ -225,29 +238,19 @@ ALTER TABLE `ingredients`
   ADD CONSTRAINT `mix_drinks_drink_id_fk` FOREIGN KEY (`drink_id`) REFERENCES `mix_drinks` (`drink_id`);
 
 --
+-- Constraints for table `junction`
+--
+ALTER TABLE `junction`
+  ADD CONSTRAINT `junction_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `junction_ibfk_2` FOREIGN KEY (`drink_id`) REFERENCES `mix_drinks` (`drink_id`);
+
+--
 -- Constraints for table `mix_drinks`
 --
 ALTER TABLE `mix_drinks`
   ADD CONSTRAINT `mix_drinks_ibfk_2` FOREIGN KEY (`strength_id`) REFERENCES `strength` (`strength_id`),
   ADD CONSTRAINT `mix_drinks_ibfk_3` FOREIGN KEY (`difficulty_id`) REFERENCES `difficulty` (`difficulty_id`),
   ADD CONSTRAINT `mix_drinks_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
-
-  --
--- Table structure for table `junction`
---
-
-CREATE TABLE IF NOT EXISTS `junction`(
-
-    `user_id` int(11) NOT NULL,
-    `drink_id` int(11) NOT NULL,
-    CONSTRAINT PK_UserDrinks PRIMARY KEY
-    (
-        user_id,
-        drink_id
-    ),
-    FOREIGN KEY (user_id) REFERENCES users (user_id),
-    FOREIGN KEY (drink_id) REFERENCES mix_drinks (drink_id)
-);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
