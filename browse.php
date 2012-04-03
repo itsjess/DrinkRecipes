@@ -121,20 +121,35 @@ foreach(range('A','Z') as $i) {
        		$name = $row['drink_name'];
 		$image = $row['image'];
        		echo "<a name='$name'><h5>$name</h5></a>";
-		echo "<img src=\"images/$image\" alt=\"Drink Image\" height=100 width=100>";
+		$picture = "<img src=\"images/$image\" alt=\"Drink Image\" height=100 width=100>";
 		$query_ing = "SELECT ingredient, ingredient_amount FROM ingredients WHERE drink_id =$id";		
 		$result_ing = mysqli_query($db, $query_ing)
 			or die("Error Querying Database A");
-		echo "<table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
+		//ingredients		
+		echo $picture, "<div class=\"tables\"><table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
 		while($row_ing = mysqli_fetch_array($result_ing)){       			
 			$ingredients = $row_ing['ingredient'];
 			$amount = $row_ing['ingredient_amount'];	
 			echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";
 
 		}
-		echo "</table>";	
-		echo "</br><a href=\"madeDrink.php?drink=$name\">I Made This!</a>";
+		echo "</table></div>";	
+		//directions
+		$query_dir = "SELECT directions FROM directions WHERE direction_id = $id";
+		$result_dir = mysqli_query($db, $query_dir)
+			or die("Error Querrying Database B");
+		echo "<div class=\"tables\"><table id=\"hor-minimalist-b\">\n<tr><th>Directions</th><tr>\n\n";
+		while($row_dir = mysqli_fetch_array($result_dir)){
+			$directions = $row_dir['directions'];
+			echo "<tr><td >$directions </td></tr>\n";
+		}
+		echo "</table></div>";
 
+
+		//check made this		
+		if (isset($_SESSION['user_id'])){		
+			echo "</br><a href=\"madeDrink.php?drink=$name\">I Made This!</a>";
+		}
     	}
 }
 ?>
@@ -142,7 +157,12 @@ foreach(range('A','Z') as $i) {
 
 <br><br><br><br>
 
-
+		<style> 
+			.tables {
+   			float: right;
+   			display: inline-block;
+			}
+			</style>
 	<div id="content-wrap">
 	
 		<div id="content">
