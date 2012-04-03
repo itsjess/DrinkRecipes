@@ -43,14 +43,12 @@ http://creativecommons.org/licenses/GPL/2.0/
 				<a href = "browse.php#Long Island Iced Tea"><img src="images/long island.jpg" height=150 width=auto title = "Long Island Iced Tea"/></a>
 				<a href = "browse.php#Mojito"><img src="images/mojito.jpg" height=150 width=auto title = "Mojito"/></a>
 				</br> 
-				Browse the <i>coolest</i> drinks!</br>
+				<a href = "browse.phpp" style = "text-decoration:none">Browse</a> the <i>coolest</i> drinks!</br>
 				Master drinks and earn points!
 			</font></center>
 		
-		</div>
-		
+		</div>	
 	</div>
-
 </div>
 </body>
 </html>
