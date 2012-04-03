@@ -126,24 +126,24 @@ foreach(range('A','Z') as $i) {
 		$result_ing = mysqli_query($db, $query_ing)
 			or die("Error Querying Database A");
 		//ingredients		
-		echo $picture, "<div class=\"tables\"><table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
+		echo $picture, "<table id=\"hor-minimalist-b\">\n<tr><th>Amount</th><th>Ingredients</th><tr>\n\n";
 		while($row_ing = mysqli_fetch_array($result_ing)){       			
 			$ingredients = $row_ing['ingredient'];
 			$amount = $row_ing['ingredient_amount'];	
 			echo "<tr><td >$amount part(s)...</td><td >$ingredients</td></tr>\n";
 
 		}
-		echo "</table></div>";	
+		echo "</table>";	
 		//directions
 		$query_dir = "SELECT directions FROM directions WHERE direction_id = $id";
 		$result_dir = mysqli_query($db, $query_dir)
 			or die("Error Querrying Database B");
-		echo "<div class=\"tables\"><table id=\"hor-minimalist-b\">\n<tr><th>Directions</th><tr>\n\n";
+		echo "<table id=\"hor-minimalist-b\">\n<tr><th>Directions</th><tr>\n\n";
 		while($row_dir = mysqli_fetch_array($result_dir)){
 			$directions = $row_dir['directions'];
 			echo "<tr><td >$directions </td></tr>\n";
 		}
-		echo "</table></div>";
+		echo "</table>";
 
 
 		//check made this		
@@ -157,12 +157,7 @@ foreach(range('A','Z') as $i) {
 
 <br><br><br><br>
 
-		<style> 
-			.tables {
-   			float: right;
-   			display: inline-block;
-			}
-			</style>
+
 	<div id="content-wrap">
 	
 		<div id="content">
