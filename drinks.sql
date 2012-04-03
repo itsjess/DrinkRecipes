@@ -19,6 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `drinks`
 --
+DROP DATABASE IF EXISTS drinks;
 CREATE DATABASE `drinks` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 GRANT ALL PRIVILEGES ON drinks.* to 'admin'@'localhost' identified by 'drinks';
 USE `drinks`;
