@@ -25,6 +25,8 @@ http://creativecommons.org/licenses/GPL/2.0/
    include('header.php');
   include "db_connect.php";
 ?>
+<div id="content-wrap">
+<div id="content">
 <div id="wrap">
 
 	<!--<div id="header">
@@ -46,8 +48,7 @@ http://creativecommons.org/licenses/GPL/2.0/
 		</ul>
 	</div>-->
 	
-
-<font size = 6><center>Browse a Listing of all of our drinks!</font><br>
+<h1>Browse All Drinks!</h1>
 <br><font size = 3>
 <a href="#A">[A]</a> 
 <a href="#B">[B]</a> 
@@ -76,8 +77,33 @@ http://creativecommons.org/licenses/GPL/2.0/
 <a href="#Y">[Y]</a>
 <a href="#Z">[Z]</a>
 
-<br><br></center>
+<br></center>
 <font size=4>
+
+<blockquote><h3>Recently Added Drinks:</h3></blockquote>
+<?php
+	$query = "SELECT * FROM mix_drinks";
+	$result = mysqli_query($db, $query);
+	$row = mysqli_fetch_array($result);
+	
+	$numDrink = (count($row) - 1);
+
+	for ( $i = $numDrink; $i >= ($numDrink - 3); $i--)
+	{
+		$query = "SELECT drink_name FROM mix_drinks WHERE drink_id = $i";
+		$result = mysqli_query($db, $query);
+		$row = mysqli_fetch_array($result);
+		$drinkName = $row[0];
+
+		$query = "SELECT image FROM mix_drinks WHERE drink_id = $i";
+		$result = mysqli_query($db, $query);
+		$row = mysqli_fetch_array($result);
+		$drinkImage = $row[0];
+				
+		echo "<a href = \"browse.php#$drinkName\"><img src= \"images/$drinkImage\" height=150 width=auto title = \"$drinkName\" /></a>";
+
+	}
+?>
 
 <?php
 //count through letters
@@ -107,6 +133,7 @@ foreach(range('A','Z') as $i) {
 
 		}
 		echo "</table>";	
+		echo "</br><a href=\"madeDrink.php?drink=$name\">I Made This!</a>";
 
     	}
 }

@@ -47,7 +47,7 @@ http://creativecommons.org/licenses/GPL/2.0/
 						$query2 = "INSERT INTO junction VALUES ('$id', '$drinkId')";
 						$result2 = mysqli_query($db, $query2) or die ("Error entering into junction table.");
 						mysqli_close($db);
-						header('Location: search.php');
+						header('Location: profile.php');
 						
 					}
 

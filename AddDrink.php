@@ -28,7 +28,7 @@ include('header.php');
 <div id="content">
 <div id="wrap">
 
-<font size = 6><center>Add A Drink</center></font><br>
+<h1>Add A Drink!</h1>
 <form enctype="multipart/form-data" method="post" action="AddIngredient.php">
     <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo GW_MAXFILESIZE; ?>" />
     
@@ -56,7 +56,7 @@ include('header.php');
     <label for="image">Picture of Drink:</label>
     <input type="file" id="image" name="image" />
 	
-    <input type="submit" value="Next" name="submit"  />
+    </br></br><input type="submit" value="Next" name="submit"  />
 	
 </div>
 

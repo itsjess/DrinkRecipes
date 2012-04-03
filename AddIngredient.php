@@ -28,12 +28,15 @@ include('header.php');
 <div id="content">
 <div id="wrap">
 
-<font size = 6><center>Add A Drink</center></font><br>
+<h1>Add An Ingredient!</h1>
 <?php
 	
     require_once('appvars.php');
 	include('db_connect.php');
-	if (isset($_SESSION['user_id'])){	
+	if (!isset($_SESSION['user_id'])){	
+		echo '<p class="error">You have to be logged in to add a drink.</p>';
+	}
+	else if (isset($_SESSION['user_id'])){
 		if (!isset($_POST['ingredient1'])){
 			$drink_name = mysqli_real_escape_string($db, trim($_POST['drink_name']));
 			$strength = mysqli_real_escape_string($db, trim($_POST['strength']));
@@ -115,13 +118,13 @@ include('header.php');
 			}
 			else{
 				echo '<p> Done adding ingredients. Click link to view drink. ';	
-				echo '<a href="ShowDrink.php">ShowDrink</a>';
+				echo '<a href="ShowDrink.php">Show Drink</a>';
 			}
 	}
-	else{
+	//else{
 		
-		echo '<p class="error">You have to be logged in to add a drink.</p>';
-	}
+	//	echo '<p class="error">You have to be logged in to add a drink.</p>';
+	//}
 	?>
 
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">

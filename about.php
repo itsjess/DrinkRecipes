@@ -50,7 +50,7 @@ http://creativecommons.org/licenses/GPL/2.0/
 		<div id="content">
 					
 					<!-- CONTENT -->
-					<h3>About Us!</h3>
+					<h1>About Us!</h1>
 					<p>Hello! This site is for people that have a passion for making mixed drinks. 
 					We wanted to make a site that made creating drinks an even more fun and rewarding experience. 
 					Not only will you enjoy mixing much more, but you can fine tune your mixing skills and keep track 

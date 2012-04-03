@@ -33,7 +33,7 @@ http://creativecommons.org/licenses/GPL/2.0/
   <form method="post" action="search.php">
 	<label for="username">Search:</label>
     <input type="text" id="search1" name="search1" />
-    <input type="submit" value="go" name="submit" />
+    </br><input type="submit" value="Search" name="submit" />
   
   
   <?php
